@@ -1249,7 +1249,7 @@ html body section#slides article iframe.half:last-child {
 .screen--navigation-timing {
   background-image: url("../images/navigation-timing.png");
 }
-.screen--timing {
+.screen--timing-f {
   background-image: url("../images/performance-timing.png");
 }
 .screen--navigation {
@@ -1275,6 +1275,39 @@ html body section#slides article iframe.half:last-child {
 }
 .screen--beacon {
   background-image: url("../images/beacon.png");
+}
+.screen--lighthouse {
+  background-image: url("../images/lighthouse.png");
+}
+.screen--puppeteer-screen {
+  background-image: url("../images/puppeteer-screen.png");
+}
+.screen--hints {
+  background-image: url("../images/hints.png");
+}
+.screen--preload {
+  background-image: url("../images/preload.png");
+}
+.screen--ch {
+  background-image: url("../images/ch.png");
+}
+.screen--ch-can {
+  background-image: url("../images/ch-can.png");
+}
+.screen--timing {
+  background-image: url("../images/timing.png");
+}
+.screen--timing-can {
+  background-image: url("../images/timing-can.png");
+}
+.screen--beacon-can {
+  background-image: url("../images/beacon-can.png");
+}
+.screen--w3c {
+  background-image: url("../images/w3c.png");
+}
+.screen--wicg {
+  background-image: url("../images/wicg.png");
 }
 @-webkit-keyframes jump {
   15% {
