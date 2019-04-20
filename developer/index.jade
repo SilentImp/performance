@@ -1,0 +1,1381 @@
+extends ./partials/layout.jade
+
+block title
+    title Performance
+
+block slides
+
+    article.illustration.illustration--title.center
+        .wrapper
+            h1 Performance
+
+    article.center.targets
+        .wrapper
+            ul
+                li Что мы меряем?
+                li Какие цели?
+                li Как мы меряем?
+
+    article.center.metrics
+        .wrapper
+            h1 Метрики
+            ul.half
+                li Time to first byte
+                //- time-to-first-byte
+                li Total byte weight
+                //- total-byte-weight
+                li Network request count
+                //- network-requests
+                li First meaningful paint
+                //- first-meaningful-paint
+            ul.half 
+                li Speed index
+                //- speed-index
+                li First input delay
+                //- max-potential-fid
+                li Time to interactive
+                //- interactive
+    
+    article.center.competitors
+        .wrapper
+            h1 Конкуренты помогут
+            ul.half
+                li Marktplaats
+                li Kluswebsite
+                li Casius
+                li Zoofy
+            ul.half 
+                li Skydreams
+                li Solvari
+                li Yonego
+                li Offerte.nl 
+
+    article.center.percent-title
+        .wrapper
+            h1 +20%
+
+    article.center.types
+        .wrapper
+            h1 Типы измерений
+            .half
+                img(src="images/glass2.png", alt="lab")
+            .half
+                img(src="images/rum.jpg", alt="lab")
+
+    //- article.center.parts
+    //-     .wrapper
+    //-         ul
+    //-             li Pipe-line
+    //-             li Server-side
+    //-             li Client-side
+
+    article.center.pipeline-title
+        .wrapper
+            h1 continuous
+                br
+                | integration
+
+    article.center.logotypes
+        .wrapper
+            .half
+                img(src="images/puppeteer.png", alt="logotype")
+            .half
+                img(src="images/pwa-lighthouse.png", alt="logotype")
+
+    //- article.center
+    //-     .wrapper
+    //-         img(src="images/pwa-lighthouse.png", alt="logotype")
+
+    //- article.center.code-7
+    //-     .wrapper
+    //-         pre
+    //-             code.bash.
+    //-                 npm i -D browser-perf
+    //-                 npm i -D selenium-standalone
+
+    //- article.center.code-2
+    //-     .wrapper
+    //-         pre
+    //-             code.javascript.
+    //-                 new Promise((resolve, reject) => {
+    //-                     selenium.install(
+    //-                         {seleniumArgs: 
+    //-                             ['--singleDriverInstall=chrome']},
+    //-                         error => {
+    //-                             if (installError) reject(installError);
+    //-                             createHub().then(resolve)
+    //-                         })});
+
+    //- article.center.code-1
+    //-     .wrapper
+    //-         pre
+    //-             code.javascript.
+    //-                 const createHub = () => {
+    //-                     return new Promise((resolve, reject) => {
+    //-                     selenium.start({
+    //-                         seleniumArgs: ['-port', 4444],
+    //-                     }, (startError, hub) => {
+    //-                         if (startError) reject(startError);
+    //-                         resolve(hub);
+    //-                     })})};
+
+    //- article.center.code-10
+    //-     .wrapper
+    //-         pre
+    //-             code.javascript.
+    //-                 hub.kill();
+
+    //- article.center.code-1
+    //-     .wrapper
+    //-         pre
+    //-             code.javascript.
+    //-                 browserPerf(
+    //-                     url,
+    //-                     (err, result) => {/*…*/},
+    //-                     {
+    //-                         selenium: 
+    //-                             'http://localhost:4444/wd/hub',
+    //-                         browsers: 
+    //-                             ['chrome'],
+    //-                     });
+
+    //- article.center.code-6
+    //-     .wrapper
+    //-         pre
+    //-             code.javascript.
+    //-                 if (result.mean_frame_time > 40)
+    //-                     process.exit(1);
+    //-                 process.exit(0);
+
+    //- article.screen.screen--server-timing.overlay
+    //-     .overlay__abstract.overlay__abstract--right
+    //-         h5.overlay__title Server Timing
+    //-         img.overlay__qr(src="images/server-timing.svg", alt="QRCODE cо ссылкой")
+    //-         p
+    //-             a.overlay__link(href="https://www.w3.org/TR/2019/WD-server-timing-20190307/", data-click=true) https://www.w3.org/TR/2019/WD-server-timing-20190307/
+
+    //- article.center
+    //-     .wrapper
+    //-         img(src="images/pwa-lighthouse.png", alt="logotype")
+
+    article.center.code-10
+        .wrapper
+            pre
+                code.bash.
+                    npm i -D lighthouse
+                    npm i -D puppeteer
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    const browser = 
+                        await puppeteer.launch({
+                            args: [
+                            '--no-sandbox', 
+                            '--disable-setuid-sandbox', 
+                            '--headless'
+                            ]});
+
+    article.center.code-0
+        .wrapper
+            pre
+                code.javascript.
+                    const lighthouseConfig = {
+                        port: (
+                            new URL(browser.wsEndpoint())
+                        ).port,
+                        output: 'json',
+                        logLevel: 'info',
+                    };
+
+    article.center.code-2
+        .wrapper
+            pre
+                code.javascript.
+                    const auditConfig = {
+                        extends: 'lighthouse:default',
+                        settings: {
+                        onlyCategories: ['performance'],
+                        onlyAudits: [
+                            'first-meaningful-paint',
+                            'speed-index-metric',
+                            'estimated-input-latency',
+                            'first-interactive',
+                            'consistently-interactive',
+                        ]}};
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    const {
+                        lhr: {
+                            audits
+                        }} = await lighthouse(
+                            'http://werkspot.nl/', 
+                            lighthouseConfig,
+                            auditConfig);
+
+
+    article.center.code-0
+        .wrapper
+            pre
+                code.javascript.
+                        if (audits["speed-index"].score < 0.7) 
+                                process.exit(1);
+                        process.exit(0);
+
+    article.center.code-7
+        .wrapper
+            pre
+                code.yml.
+                    # .gitlab-ci.yml
+                    image: node:latest
+
+                    stages:
+                    - performance
+
+    article.center.code-2
+        .wrapper
+            pre
+                code.yml.
+                    lighthouse:
+                        stage: performance
+                        before_script:
+                            - apt-get update
+                            - apt-get -y install gconf-service …
+                            - node -v
+                            - npm i
+                        script:
+                            - npm run lighthouse
+
+    article.deps
+        .wrapper gconf-service libasound2 libatk1.0-0 libatk-bridge2.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+
+    article.screen.screen--demo.overlay
+        .overlay__abstract.overlay__abstract--right
+            h5.overlay__title Пример
+            img.overlay__qr(src="images/demo.svg", alt="QRCODE cо ссылкой")
+            p
+                a.overlay__link(href="https://gitlab.com/silentimp/lighthouse", data-click=true) https://gitlab.com/silentimp/lighthouse
+
+    //- article.screen.screen--server-timing.overlay
+    //-     .overlay__abstract.overlay__abstract--right
+    //-         h5.overlay__title Server Timing
+    //-         img.overlay__qr(src="images/server-timing.svg", alt="QRCODE cо ссылкой")
+    //-         p
+    //-             a.overlay__link(href="https://www.w3.org/TR/2019/WD-server-timing-20190307/", data-click=true) https://www.w3.org/TR/2019/WD-server-timing-20190307/
+
+    //- article.center.server-title
+    //-     .wrapper
+    //-         h1 Server-
+    //-             br
+    //-             | Side
+
+    article.center.text-title
+        .wrapper
+            h1 Server
+                br
+                | Timing
+
+    //- article.center.code-10
+    //-     .wrapper
+    //-         pre
+    //-             code.
+    //-                 Chrome v65
+    //-                 FF
+    //-                 Safari
+
+    article.center.code-9
+        .wrapper
+            pre
+                code.http.
+                    Server-Timing:
+                        cache;
+                        desc="Cache Read";
+                        dur=23.2
+
+    article.center.code-9
+        .wrapper
+            pre
+                code.javascript.
+                    Server-Timing: cache
+
+    article.center.code-10
+        .wrapper
+            pre
+                code.javascript.
+                    Chrome v60-64
+
+    article.center.code-10
+        .wrapper
+            pre
+                code.javascript.
+                    Server-Timing:
+                        cache=23.2;
+                        "Cache Read"
+
+    article.screen.screen--server-timing-screen
+
+    article.screen.screen--server-timing-screen-safari
+
+    article.center.code-0
+        .wrapper
+            pre
+                code.javascript.
+                    const express = require('express');
+                    const app = express();
+                    app.get('/', (req, res) => {
+                        //…
+                        res.send(200).end();
+                    });
+                    app.listen(3000);
+
+    article.center.code-7
+        .wrapper
+            pre
+                code.javascript.
+                    res.set(
+                        'Server-Timing',
+                        'cache;
+                         desc="Cache Read";
+                         dur=23.2');
+
+    article.center.code-8
+        .wrapper
+            pre
+                code.javascript.
+                    // node.js v0.7.6
+                    process.hrtime();
+                    // integer[]
+                    // [ seconds, nanoseconds ]
+                    // [ 8063, 904046009 ]
+
+    article.center.code-8
+        .wrapper
+            pre
+                code.javascript.
+                    const from =
+                        process.hrtime();
+                    const duration =
+                        process.hrtime(from);
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    // To milliseconds
+                    const ms = parseInt(
+                                duration[0] * 1e3 +
+                                duration[1] * 1e-6,
+                               10);
+
+    article.center.code-7
+        .wrapper
+            pre
+                code.javascript.
+                    // node.js v10.7.0, Stage 3
+                    const from =
+                        process.hrtime.bigint();
+                    const to =
+                        process.hrtime.bigint();
+                    const duration = to - from;
+
+    article.center.code-9
+        .wrapper
+            pre
+                code.javascript.
+                    // To milliseconds
+                    const ms =
+                        duration / 1000000n;
+
+    article.screen.screen--bigint.overlay
+        .overlay__abstract.overlay__abstract--right
+            h5.overlay__title BigInt
+            img.overlay__qr(src="images/bigint.svg", alt="QRCODE cо ссылкой")
+            p
+                a.overlay__link(href="https://tc39.github.io/proposal-bigint/", data-click=true) https://tc39.github.io/proposal-bigint/
+
+    article.screen.screen--npm-server-timing.overlay
+        .overlay__abstract.overlay__abstract--right
+            h5.overlay__title Server Timing npm package
+            img.overlay__qr(src="images/npm-server-timing.svg", alt="QRCODE cо ссылкой")
+            p
+                a.overlay__link(href="https://www.npmjs.com/package/server-timing-header", data-click=true) https://www.npmjs.com/package/server-timing-header
+
+    article.center.code-7
+        .wrapper
+            pre
+                code.bash.
+                    npm i -S server-timing-header
+
+    article.center.code-2
+        .wrapper
+            pre
+                code.javascript.
+                    const serverTiming = require('server-timing-header');
+                    const express = require('express');
+                    const app = express();
+                    app.use(serverTiming);
+                    app.get('/', (req, res) => {
+                        //…
+                        res.send(200).end();
+                    });
+                    app.listen(3000);
+
+    article.center.code-2
+        .wrapper
+            pre
+                code.javascript.
+                    const serverTiming = require('server-timing-header');
+                    // const express = require('express');
+                    // const app = express();
+                    app.use(serverTiming);
+                    // app.get('/', (req, res) => {
+                    // …
+                    //    res.send(200).end();
+                    // });
+                    // app.listen(3000);
+
+    article.center.code-7
+        .wrapper
+            pre
+                code.javascript.
+                    req.serverTiming.from('db');
+                    // fetching data from database
+                    req.serverTiming.to('db');
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    req.serverTiming.add(
+                        'cache', // name
+                        'Cache Read', //description
+                        23.2 // value
+                    );
+
+    article.center.code-7
+        .wrapper
+            pre
+                code.javascript.
+                    req.serverTiming.add(
+                        'cache',
+                        'Element not in cache',
+                    );
+
+    article.center.code-1
+        .wrapper
+            pre
+                code.javascript.
+                    // not safari
+                    // ff need https
+                    performance.getEntriesByType('navigation');
+                    performance.getEntriesByType('resource');
+
+    article.screen.screen--client-server-timing
+
+    article.center.code-9
+        .wrapper
+            pre
+                code.javascript.
+                    Timing-Allow-Origin: *
+
+    //- article.center.code-10
+    //-     .wrapper
+    //-         pre
+    //-             code.javascript.
+    //-                 HTTPS
+
+    article.screen.screen--server-timing-caniuse
+
+    article.screen.screen--blink-edge
+
+    article.screen.screen--server-timing.overlay
+        .overlay__abstract.overlay__abstract--right
+            h5.overlay__title Server Timing
+            img.overlay__qr(src="images/server-timing.svg", alt="QRCODE cо ссылкой")
+            p
+                a.overlay__link(href="https://www.w3.org/TR/2019/WD-server-timing-20190307/", data-click=true) https://www.w3.org/TR/2019/WD-server-timing-20190307/
+
+
+    article.center.trailer-title
+        .wrapper
+            h1 Trailer
+                br
+                | Header
+
+    article.screen.screen--ttfb-data
+
+    article.center.code-0
+        .wrapper
+            pre
+                code.javascript.
+                    const {
+                        renderToNodeStream
+                        } = require("react-dom/server");
+                    const React = require("react");
+                    const express = require('express');
+                    const app = express();
+                    app.get('/', (req, res) => {/*…*/});
+                    app.listen(3000);
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    res.writeHead(200, {
+                        'Content-Type': 'text/html',
+                        'Transfer-Encoding': 'chunked'
+                    });
+                    res.write("&lt;main id='content'>");
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    const stream = renderToNodeStream(
+                        React.createElement(
+                            'p', null, 'XXX'));
+                    stream.pipe(res, { end: false });
+                    stream.on('end', () => {
+                        res.write("&lt;/main>").end();
+                    });
+
+    article.center.code-10
+        .wrapper
+            pre
+                code.javascript.
+                    Server-Timing?
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    res.writeHead(200, {
+                        'Trailer': 'Server-Timing',
+                        // …
+                    });
+
+    article.center.code-0
+        .wrapper
+            pre
+                code.javascript.
+                    stream.on('end', () => {
+                        res.write("&lt;/main>")
+                        res.addTrailers({
+                            'Server-Timing':
+                            'metric;desc="metric 2";dur=12'
+                        });
+                        res.end();
+                    });
+
+    article.screen.screen--trail
+
+    article.screen.screen--trailer.overlay
+        .overlay__abstract.overlay__abstract--right
+            h5.overlay__title Trailer
+            img.overlay__qr(src="images/trailer.svg", alt="QRCODE cо ссылкой")
+            p
+                a.overlay__link(href="https://tools.ietf.org/html/rfc7230#section-4.4", data-click=true) https://tools.ietf.org/html/rfc7230
+
+    article.center.hint-title
+        .wrapper
+            h1 Resource
+                br
+                | Hints 
+
+    article.center.code-1
+        .wrapper
+            pre
+                code.http.
+                    HTTP/1.1 200 OK
+                    Link: &lt;https://widget.com>; 
+                        rel=dns-prefetch
+                    Link: &lt;https://example.com>; 
+                        rel=preconnect
+                    Link: &lt;https://example.com/next-page.html>; 
+                        rel=prerender;
+                    Link: &lt;https://example.com/logo-hires.jpg>; 
+                        rel=prefetch; as=image;
+
+    article.center.code-1
+        .wrapper
+            pre
+                code.html.
+                    &lt;link rel="dns-prefetch" 
+                        href="//widget.com">
+                    &lt;link rel="preconnect" 
+                        href="//cdn.example.com">
+                    &lt;link rel="prerender" 
+                        href="//example.com/next-page.html">
+                    &lt;link rel="prefetch" 
+                        href="//example.com/logo-hires.jpg"
+                        as="image">
+
+    article.center.preload-title
+        .wrapper
+            h1 Preload
+
+    article.center.code-9
+        .wrapper
+            pre
+                code.html.
+                    &lt;link 
+                        rel="preload" 
+                        href="/goodmojo.css" 
+                        as="style">
+
+    article.center.code-8
+        .wrapper
+            pre
+                code.http.
+                    HTTP/1.1 200 OK
+                    Link: 
+                        &lt;/badmojo.css>; 
+                        rel=preload; 
+                        as=style
+
+    article.center.code-0
+        .wrapper
+            pre
+                code.javascript.
+                    res.set('Link', [
+                        '&lt;/badmojo.css>; rel=preload; 
+                            as=style',
+                        '&lt;/badmojo.js>; rel=preload; 
+                            as=script',
+                        '&lt;/font.ttf>; rel=preload; 
+                            as=font']);
+
+    article.screen.screen--link
+
+    article.screen.screen--ttfb-data
+
+    article.center.hint-title
+        .wrapper
+            h1 103 Early
+                br
+                | Hints 
+
+
+    article.center.code-0
+        .wrapper
+            pre
+                code.http.
+                    HTTP/1.1 103 Early Hints
+                    Link: 
+                        &lt;/hintmojo.css>; 
+                        rel=preload; 
+                        as=style
+                    
+                    HTTP/1.1 200 OK
+
+    article.center.code-9
+        .wrapper
+            pre
+                code.bash.
+                    npm i -S early-hints
+
+    article.center.code-8
+        .wrapper
+            pre
+                code.bash.
+                    app.use(earlyHints([{
+                        path: '/hintmojo.css', 
+                        rel: 'preload', 
+                        as: 'style' 
+                    }]));
+    
+    article.screen.screen--linkhint
+
+
+    article.screen.screen--hint.overlay
+        .overlay__abstract.overlay__abstract--right
+            h5.overlay__title 103 Hint status
+            img.overlay__qr(src="images/trailer.svg", alt="QRCODE cо ссылкой")
+            p
+                a.overlay__link(href="https://tools.ietf.org/html/rfc7230#section-4.4", data-click=true) https://tools.ietf.org/html/rfc7230
+
+
+    article.center.clienthint-title
+        .wrapper
+            h1 Client
+                br
+                | Hints 
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.http.
+                    Accept-CH: 
+                        Save-Data,
+                        Downlink,
+                        Device-Memory,
+                        DPR,
+                        Viewport-Width,
+                        Width
+
+    article.center.code-0
+        .wrapper
+            pre
+                code.html.
+                    &lt;meta 
+                        http-equiv="Accept-CH" 
+                        content="Save-Data
+                            Downlink,
+                            Device-Memory,
+                            DPR,
+                            Viewport-Width, 
+                            Width" />
+
+    article.center.code-9
+        .wrapper
+            pre
+                code.http.
+                    'save-data': 'on',
+                    'downlink': '7.95',
+                    'device-memory': '8',
+
+    article.center.code-9
+        .wrapper
+            pre
+                code.http.
+                    'dpr': '1',
+                    'viewport-width': '1306',
+                    'width': '327',
+
+                //- 7.95 Mbps
+
+    article.screen.screen--memory
+
+    article.screen.screen--downlink
+
+    //- article.center.code-9
+    //-     .wrapper
+    //-         pre
+    //-             code.html.
+    //-                 &lt;img 
+    //-                     src="..."
+    //-                     sizes="25vw" />
+
+    article.center.code-8
+        .wrapper
+            pre
+                code.http.
+                    Accept-CH-Lifetime: 86400
+
+    article.center.code-9
+        .wrapper
+            pre
+                code.http.
+                    Vary: Device-Memory
+
+
+    //- article.center.client-title
+    //-     .wrapper
+    //-         h1 Client-
+    //-             br
+    //-             | Side
+
+
+    article.center.client-title
+        .wrapper
+            h1 Perfor
+                br
+                | mance
+
+    article.center.code-10
+        .wrapper
+            pre
+                code.javascript.
+                    Performance
+                    PerformanceObserver
+
+    article.screen.screen--performance
+
+    article.center.entry
+        .wrapper
+            ul
+                li measure
+                li mark
+                li navigation
+                li resource
+                li longtask
+
+    article.center.code-0
+        .wrapper
+            pre
+                code.javascript.
+                    performance.getEntriesByType(entryType)
+                    performance.getEntriesByName(name)
+                    performance.getEntries()
+
+    article.center.code-1
+        .wrapper
+            pre
+                code.javascript.
+                    const observer 
+                        = new PerformanceObserver(this.handler);
+                    observer.observe({
+                        entryTypes
+                    });
+
+
+    article.center.hires-time
+        .wrapper
+            h1 High Res.
+                br
+                | Time
+
+    article.center.code-9
+        .wrapper
+            pre
+                code.javascript.
+                    performance.now()
+                    performance.timeOrigin
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    const start = performance.now();
+                    const end = performance.now();
+                    const duration = end - start;
+
+    article.screen.screen--hirestime.overlay
+        .overlay__abstract.overlay__abstract--right
+            h5.overlay__title High Resolution Time Level 2
+            img.overlay__qr(src="images/hirestime.svg", alt="QRCODE cо ссылкой")
+            p
+                a.overlay__link(href="https://www.w3.org/TR/2018/CR-hr-time-2-20180301/", data-click=true) https://www.w3.org/TR/2018/CR-hr-time-2-20180301/
+
+
+    article.center.client-title
+        .wrapper
+            h1 User
+                br
+                | Timing
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    performance.mark("startTask1");
+                    // Получение данных
+                    const url = '/api/v1/employees';
+                    const resource = await fetch(url);
+                    performance.mark("endTask1");
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    const entries = performance
+                        .getEntriesByType("mark");
+                    for (const entry of entries) {
+                        console.table(entry.toJSON());
+                    }
+
+    article.screen.screen--mark
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    performance.measure(
+                        'task1', 
+                        'startTask1', 
+                        'endTask1'
+                    );
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    const entries = performance
+                        .getEntriesByType("measure");
+                    for (const entry of entries) {
+                        console.table(entry.toJSON());
+                    }
+
+    article.screen.screen--measure
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    performance.clearMeasures('task1')
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    performance.measure('from start');
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    const entries = performance
+                        .getEntriesByType("measure");
+                    for (const entry of entries) {
+                        console.table(entry.toJSON());
+                    }
+
+    article.screen.screen--measure-2
+
+    article.center.navigation-time
+        .wrapper
+            h1 Navigation
+                br
+                | Timing
+
+    //- article.screen.screen--timing-overview
+
+    article.center.code-9
+        .wrapper
+            pre
+                code.javascript.
+                    performance.timing
+                    performance.navigation
+
+    article.screen.screen--timing
+
+    article.screen.screen--navigation
+
+    article.screen.screen--navi
+
+    article.screen.screen--navigation-timing.overlay
+        .overlay__abstract.overlay__abstract--right
+            h5.overlay__title Navigation Timing
+            img.overlay__qr(src="images/navigation-timing.svg", alt="QRCODE cо ссылкой")
+            p
+                a.overlay__link(href="https://www.w3.org/TR/2012/REC-navigation-timing-20121217/", data-click=true) https://www.w3.org/TR/2012/REC-navigation-timing-20121217/
+
+    article.center.resource-time
+        .wrapper
+            h1 Resource
+                br
+                | Timing
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    const entries = performance
+                        .getEntriesByType("resource");
+                    for (const entry of entries) {
+                        console.table(entry.toJSON());
+                    }
+
+    article.screen.screen--resource
+
+    article.screen.screen--resource-timing.overlay
+        .overlay__abstract.overlay__abstract--right
+            h5.overlay__title Resource Timing
+            img.overlay__qr(src="images/resource.svg", alt="QRCODE cо ссылкой")
+            p
+                a.overlay__link(href="https://w3c.github.io/resource-timing/", data-click=true) https://w3c.github.io/resource-timing/
+
+    article.center.long
+        .wrapper
+            h1 Long
+                br
+                | Task
+
+    article.center.code-0
+        .wrapper
+            pre
+                code.javascript.
+                    const plannedEntries = ['longtask'];
+                    const entryTypes = 
+                        plannedEntries.filter(entry => {
+                        return PerformanceObserver
+                            .supportedEntryTypes
+                            .includes(entry);
+                    });
+
+    article.center.code-0
+        .wrapper
+            pre
+                code.javascript.
+                    if (entryTypes.length > 0) {
+                        const observer = 
+                            new PerformanceObserver(report);
+                        observer.observe({ 
+                            entryTypes
+                        });
+                    }
+
+    article.screen.screen--long.overlay
+        .overlay__abstract.overlay__abstract--right
+            h5.overlay__title Long Tasks API 1
+            img.overlay__qr(src="images/long.svg", alt="QRCODE cо ссылкой")
+            p
+                a.overlay__link(href="https://w3c.github.io/longtasks/", data-click=true) https://w3c.github.io/longtasks/
+
+
+    article.screen.screen--self.overlay
+        .overlay__abstract.overlay__abstract--right
+            h5.overlay__title JS profiling API
+            img.overlay__qr(src="images/self.svg", alt="QRCODE cо ссылкой")
+            p
+                a.overlay__link(href="https://github.com/WICG/js-self-profiling", data-click=true) https://github.com/WICG/js-self-profiling
+
+    article.center.beacon
+        .wrapper
+            h1 Beacon
+
+    article.center.code-2
+        .wrapper
+            pre
+                code.javascript.
+                    const express = require('express');
+                    const formidable = require('express-formidable');
+                    const path = require('path');
+                    const port = 3333;
+                    const app = express();
+
+    article.center.code-0
+        .wrapper
+            pre
+                code.javascript.
+                    app.use(formidable({
+                        encoding: 'utf-8',
+                        uploadDir: path.join(
+                            __dirname, 
+                            'uploads'),
+                        multiples: true,
+                        keepExtensions:true,
+                    }));
+
+    article.center.code-6
+        .wrapper
+            pre
+                code.javascript.
+                    app.use('/reports', 
+                        function (req, res) {
+                            res.status(204).end();
+                            console.log(req.fields);
+                    });
+
+    article.center.code-7
+        .wrapper
+            pre
+                code.javascript.
+                    app.use('/', 
+                        function (req, res) {
+                            res.send(`/…/`)
+                                .status(200)
+                                .end();
+                    });
+                    app.listen(port);
+
+    article.center.code-7
+        .wrapper
+            pre
+                code.javascript.
+                    let data = new FormData();
+                    let items = {
+                        some: 'data',
+                        more: ['words', 'aside'],
+                    };
+
+    article.center.code-7
+        .wrapper
+            pre
+                code.javascript.
+                    for ( var key in items ) {
+                        data.append(
+                            key, 
+                            items[key]
+                        );
+                    }
+
+    article.center.code-0
+        .wrapper
+            pre
+                code.javascript.
+                    navigator.sendBeacon('/reports', data);
+
+    article.center.code-9
+        .wrapper
+            pre
+                code.javascript.
+                    { 
+                        some: 'data', 
+                        more: 'words,aside' 
+                    }
+
+    article.screen.screen--beacon.overlay
+        .overlay__abstract.overlay__abstract--right
+            h5.overlay__title Beacon
+            img.overlay__qr(src="images/beacon.svg", alt="QRCODE cо ссылкой")
+            p
+                a.overlay__link(href="https://w3c.github.io/beacon/", data-click=true) https://w3c.github.io/beacon/
+
+    //- article.center.code-9
+    //-     .wrapper
+    //-         pre
+    //-             code.javascript.
+    //-                 performance
+
+    //- article.center.hint-title
+    //-     .wrapper
+    //-         h1 Performance
+    //-             br
+    //-             | Observer 
+
+
+    //- article.screen.screen--ast-explorer.overlay
+    //-     .overlay__abstract.overlay__abstract--left
+    //-         h5.overlay__title AST Explorer
+    //-         img.overlay__qr(src="images/ast-explorer.svg", alt="QRCODE cо ссылкой")
+    //-         p
+    //-             a.overlay__link(href="https://astexplorer.net/", data-click=true) https://astexplorer.net/
+
+    //- article.illustration.illustration--eslint
+
+    //- article.center.code-0
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         $ mkdir eslint-plugin-demoforfix
+    //-         $ cd eslint-plugin-demoforfix
+    //-         $ npm init
+
+    //- article.center.code-0
+    //-   .wrapper
+    //-     pre
+    //-       code.json.
+    //-         // package.json
+    //-         {
+    //-           "name": "eslint-plugin-demoforfix",
+    //-           "version": "1.0.0",
+    //-           "main": "no-string-classname.js",
+    //-         }
+
+    //- article.center.code-0
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         // no-string-classname.js
+    //-         module.exports = {
+    //-           rules: {
+    //-               "no-string-classname": {
+    //-                   create: function (context) {
+    //-                     return {…}
+    //-         }}}};
+
+    //- article.screen.screen--ast-find
+
+    //- article.center.code-7
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         context.report({
+    //-           message,
+    //-           node,
+    //-           //…
+    //-         });
+
+    //- article.center.code-0
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         return {
+    //-           "JSXAttribute": function (node) {
+    //-             // …
+    //-           }
+    //-         }
+
+    //- article.center.code-0
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         if ((node.name.name === 'className')
+    //-           && (node.value.type === 'Literal')) {
+    //-           context.report({
+    //-             node,
+    //-             message: 'You should use
+    //-             css modules instead'
+    //-           });
+    //-         }
+
+    //- article.center.code-9
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         $ npm version minor
+    //-         $ npm publish
+
+    //- article.screen.screen--publish
+
+    //- article.center.code-0
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         $ npm i -D eslint-plugin-demoforfix
+
+    //- article.center.code-1
+    //-   .wrapper
+    //-     pre
+    //-       code.json.
+    //-         // .eslintrc
+    //-         {
+    //-           "rules": {
+    //-             "demoforfix/no-string-classname": 2
+    //-           },
+    //-           "plugins": [
+    //-             "demoforfix"
+    //-           ],
+    //-         }
+
+    //- article.screen.screen--eslint-error
+
+    //- article.screen.screen--easy
+
+    //- article.illustration.illustration--unacceptable
+
+    //- article.illustration.illustration--yo
+
+    //- article.center.code-0
+    //-   .wrapper
+    //-     pre
+    //-       code.bash.
+    //-         $ sudo npm install -g yo
+    //-         $ sudo npm install -g generator-eslint
+
+    //- article.center.code-0
+    //-   .wrapper
+    //-     pre
+    //-       code.bash.
+    //-         $ mkdir eslint-plugin-demoforfix
+    //-         $ cd eslint-plugin-demoforfix
+    //-         $ yo eslint:plugin
+    //-         $ npm i
+
+    //- article.screen.screen--yo
+
+    //- article.center.code-0
+    //-   .wrapper
+    //-     pre
+    //-       code.json.
+    //-         // package.json
+    //-         {
+    //-           "name": "eslint-plugin-demoforfix",
+    //-           "version": "1.0.0",
+    //-           "main": "lib/index.js",
+    //-         }
+
+    //- article.center.code-0
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         var requireIndex =
+    //-           require("requireindex");
+    //-         module.exports.rules =
+    //-           requireIndex(__dirname + "/rules");
+
+    //- article.center.code-0
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         // no-string-classname.js
+    //-         module.exports = {
+    //-           rules: {
+    //-             "no-string-classname": {
+    //-                 create: function (context) {
+    //-                   return {…}
+    //-         }}}};
+
+    //- article.center.code-0
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         // no-string-classname.js
+    //-         module.exports = {
+    //-           meta: {…},
+    //-           "no-string-classname": {
+    //-               create: function (context) {
+    //-                 return {…}
+    //-         }}};
+
+    //- article.center.code-2
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         const rule =
+    //-           require("../../../lib/rules/no-string-classname");
+    //-         const RuleTester = require("eslint").RuleTester;
+
+    //- article.center.code-0
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         const parserOptions = {
+    //-           ecmaVersion: 2018,
+    //-           sourceType: 'module',
+    //-           ecmaFeatures: {jsx: true}};
+    //-         const ruleTester =
+    //-           new RuleTester({parserOptions});
+
+    //- article.center.code-0
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         ruleTester.run(
+    //-           "no-string-classname",
+    //-           rule, {
+    //-           valid: [{…}, {…}],
+    //-           invalid: [{…}, {…}],
+    //-         });
+
+    //- article.center.code-9
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         {
+    //-           code: '…'
+    //-         }
+
+    //- article.center.code-7
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         { code: '…',
+    //-         errors: [{
+    //-             message: "You should use
+    //-               css modules instead",
+    //-             type: "JSXAttribute"
+    //-         }]}
+
+    //- article.center.code-9
+    //-   .wrapper
+    //-     pre
+    //-       code.javascript.
+    //-         $ npm t
+
+    //- article.screen.screen--test
+
+    //- article.screen.screen--develop.overlay
+    //-   .overlay__abstract.overlay__abstract--right
+    //-     h5.overlay__title ESLint Developer Documentation
+    //-     img.overlay__qr(src="images/develop.svg", alt="QRCODE cо ссылкой")
+    //-     p
+    //-       a.overlay__link(href="https://eslint.org/docs/developer-guide/architecture", data-click=true) https://goo.gl/RpEUbq
+
+    article.contacts.center.qrcode
+        .wrapper
+            .about-speaker.half
+                p.name Антон Немцев
+                p.link http://silentimp.info/
+                p.twitter @silentimp
+                p.email thesilentimp@gmail.com
+                p.skype skype: ravencry
+            .half
+                img(src="images/git.svg", alt="QRCODE cо ссылкой на доклад")
+            p
+                a(href="https://github.com/SilentImp/AST-and-plugins", data-click=true) https://goo.gl/Uk7NHL

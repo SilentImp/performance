@@ -1,0 +1,342 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"><title>Performance</title><link href="css/styles.css" rel="stylesheet"><script data-main="js/presentation" src="js/requirejs/require.js"></script></head><body><form class="go-to-page" action="/select/slide" method="post"><fieldset><input type="text" maxlength="3" value="" placeholder="1"></fieldset></form><section class="progress"><div class="value"></div></section><section class="dark" id="slides"><article class="illustration illustration--title center"><div class="wrapper"><h1>Performance</h1></div></article><article class="center targets"><div class="wrapper"><ul><li>Что мы меряем?</li><li>Какие цели?</li><li>Как мы меряем?</li></ul></div></article><article class="center metrics"><div class="wrapper"><h1>Метрики</h1><ul class="half"><li>Time to first byte</li><li>Total byte weight</li><li>Network request count</li><li>First meaningful paint</li></ul><ul class="half"> <li>Speed index</li><li>First input delay</li><li>Time to interactive</li></ul></div></article><article class="center competitors"><div class="wrapper"><h1>Конкуренты помогут</h1><ul class="half"><li>Marktplaats</li><li>Kluswebsite</li><li>Casius</li><li>Zoofy</li></ul><ul class="half"> <li>Skydreams</li><li>Solvari</li><li>Yonego</li><li>Offerte.nl </li></ul></div></article><article class="center percent-title"><div class="wrapper"><h1>+20%</h1></div></article><article class="center types"><div class="wrapper"><h1>Типы измерений</h1><div class="half"><img src="images/glass2.png" alt="lab"></div><div class="half"><img src="images/rum.jpg" alt="lab"></div></div></article><article class="center pipeline-title"><div class="wrapper"><h1>continuous<br>integration</h1></div></article><article class="center logotypes"><div class="wrapper"><div class="half"><img src="images/puppeteer.png" alt="logotype"></div><div class="half"><img src="images/pwa-lighthouse.png" alt="logotype"></div></div></article><article class="center code-10"><div class="wrapper"><pre><code class="bash">npm i -D lighthouse
+npm i -D puppeteer
+</code></pre></div></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">const browser = 
+    await puppeteer.launch({
+        args: [
+        '--no-sandbox', 
+        '--disable-setuid-sandbox', 
+        '--headless'
+        ]});
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">const lighthouseConfig = {
+    port: (
+        new URL(browser.wsEndpoint())
+    ).port,
+    output: 'json',
+    logLevel: 'info',
+};
+</code></pre></div></article><article class="center code-2"><div class="wrapper"><pre><code class="javascript">const auditConfig = {
+    extends: 'lighthouse:default',
+    settings: {
+    onlyCategories: ['performance'],
+    onlyAudits: [
+        'first-meaningful-paint',
+        'speed-index-metric',
+        'estimated-input-latency',
+        'first-interactive',
+        'consistently-interactive',
+    ]}};
+</code></pre></div></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">const {
+    lhr: {
+        audits
+    }} = await lighthouse(
+        'http://werkspot.nl/', 
+        lighthouseConfig,
+        auditConfig);
+
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">if (audits["speed-index"].score < 0.7) 
+        process.exit(1);
+process.exit(0);
+</code></pre></div></article><article class="center code-7"><div class="wrapper"><pre><code class="yml"># .gitlab-ci.yml
+image: node:latest
+
+stages:
+- performance
+</code></pre></div></article><article class="center code-2"><div class="wrapper"><pre><code class="yml">lighthouse:
+    stage: performance
+    before_script:
+        - apt-get update
+        - apt-get -y install gconf-service …
+        - node -v
+        - npm i
+    script:
+        - npm run lighthouse
+</code></pre></div></article><article class="deps"><div class="wrapper">gconf-service libasound2 libatk1.0-0 libatk-bridge2.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget</div></article><article class="screen screen--demo overlay"><div class="overlay__abstract overlay__abstract--right"><h5 class="overlay__title">Пример</h5><img class="overlay__qr" src="images/demo.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://gitlab.com/silentimp/lighthouse" data-click>https://gitlab.com/silentimp/lighthouse</a></p></div></article><article class="center text-title"><div class="wrapper"><h1>Server<br>Timing</h1></div></article><article class="center code-9"><div class="wrapper"><pre><code class="http">Server-Timing:
+    cache;
+    desc="Cache Read";
+    dur=23.2
+</code></pre></div></article><article class="center code-9"><div class="wrapper"><pre><code class="javascript">Server-Timing: cache
+</code></pre></div></article><article class="center code-10"><div class="wrapper"><pre><code class="javascript">Chrome v60-64
+</code></pre></div></article><article class="center code-10"><div class="wrapper"><pre><code class="javascript">Server-Timing:
+    cache=23.2;
+    "Cache Read"
+</code></pre></div></article><article class="screen screen--server-timing-screen"></article><article class="screen screen--server-timing-screen-safari"></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">const express = require('express');
+const app = express();
+app.get('/', (req, res) => {
+    //…
+    res.send(200).end();
+});
+app.listen(3000);
+</code></pre></div></article><article class="center code-7"><div class="wrapper"><pre><code class="javascript">res.set(
+    'Server-Timing',
+    'cache;
+     desc="Cache Read";
+     dur=23.2');
+</code></pre></div></article><article class="center code-8"><div class="wrapper"><pre><code class="javascript">// node.js v0.7.6
+process.hrtime();
+// integer[]
+// [ seconds, nanoseconds ]
+// [ 8063, 904046009 ]
+</code></pre></div></article><article class="center code-8"><div class="wrapper"><pre><code class="javascript">const from =
+    process.hrtime();
+const duration =
+    process.hrtime(from);
+</code></pre></div></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">// To milliseconds
+const ms = parseInt(
+            duration[0] * 1e3 +
+            duration[1] * 1e-6,
+           10);
+</code></pre></div></article><article class="center code-7"><div class="wrapper"><pre><code class="javascript">// node.js v10.7.0, Stage 3
+const from =
+    process.hrtime.bigint();
+const to =
+    process.hrtime.bigint();
+const duration = to - from;
+</code></pre></div></article><article class="center code-9"><div class="wrapper"><pre><code class="javascript">// To milliseconds
+const ms =
+    duration / 1000000n;
+</code></pre></div></article><article class="screen screen--bigint overlay"><div class="overlay__abstract overlay__abstract--right"><h5 class="overlay__title">BigInt</h5><img class="overlay__qr" src="images/bigint.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://tc39.github.io/proposal-bigint/" data-click>https://tc39.github.io/proposal-bigint/</a></p></div></article><article class="screen screen--npm-server-timing overlay"><div class="overlay__abstract overlay__abstract--right"><h5 class="overlay__title">Server Timing npm package</h5><img class="overlay__qr" src="images/npm-server-timing.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://www.npmjs.com/package/server-timing-header" data-click>https://www.npmjs.com/package/server-timing-header</a></p></div></article><article class="center code-7"><div class="wrapper"><pre><code class="bash">npm i -S server-timing-header
+</code></pre></div></article><article class="center code-2"><div class="wrapper"><pre><code class="javascript">const serverTiming = require('server-timing-header');
+const express = require('express');
+const app = express();
+app.use(serverTiming);
+app.get('/', (req, res) => {
+    //…
+    res.send(200).end();
+});
+app.listen(3000);
+</code></pre></div></article><article class="center code-2"><div class="wrapper"><pre><code class="javascript">const serverTiming = require('server-timing-header');
+// const express = require('express');
+// const app = express();
+app.use(serverTiming);
+// app.get('/', (req, res) => {
+// …
+//    res.send(200).end();
+// });
+// app.listen(3000);
+</code></pre></div></article><article class="center code-7"><div class="wrapper"><pre><code class="javascript">req.serverTiming.from('db');
+// fetching data from database
+req.serverTiming.to('db');
+</code></pre></div></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">req.serverTiming.add(
+    'cache', // name
+    'Cache Read', //description
+    23.2 // value
+);
+</code></pre></div></article><article class="center code-7"><div class="wrapper"><pre><code class="javascript">req.serverTiming.add(
+    'cache',
+    'Element not in cache',
+);
+</code></pre></div></article><article class="center code-1"><div class="wrapper"><pre><code class="javascript">// not safari
+// ff need https
+performance.getEntriesByType('navigation');
+performance.getEntriesByType('resource');
+</code></pre></div></article><article class="screen screen--client-server-timing"></article><article class="center code-9"><div class="wrapper"><pre><code class="javascript">Timing-Allow-Origin: *
+</code></pre></div></article><article class="screen screen--server-timing-caniuse"></article><article class="screen screen--blink-edge"></article><article class="screen screen--server-timing overlay"><div class="overlay__abstract overlay__abstract--right"><h5 class="overlay__title">Server Timing</h5><img class="overlay__qr" src="images/server-timing.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://www.w3.org/TR/2019/WD-server-timing-20190307/" data-click>https://www.w3.org/TR/2019/WD-server-timing-20190307/</a></p></div></article><article class="center trailer-title"><div class="wrapper"><h1>Trailer<br>Header</h1></div></article><article class="screen screen--ttfb-data"></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">const {
+    renderToNodeStream
+    } = require("react-dom/server");
+const React = require("react");
+const express = require('express');
+const app = express();
+app.get('/', (req, res) => {/*…*/});
+app.listen(3000);
+</code></pre></div></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">res.writeHead(200, {
+    'Content-Type': 'text/html',
+    'Transfer-Encoding': 'chunked'
+});
+res.write("&lt;main id='content'>");
+</code></pre></div></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">const stream = renderToNodeStream(
+    React.createElement(
+        'p', null, 'XXX'));
+stream.pipe(res, { end: false });
+stream.on('end', () => {
+    res.write("&lt;/main>").end();
+});
+</code></pre></div></article><article class="center code-10"><div class="wrapper"><pre><code class="javascript">Server-Timing?
+</code></pre></div></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">res.writeHead(200, {
+    'Trailer': 'Server-Timing',
+    // …
+});
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">stream.on('end', () => {
+    res.write("&lt;/main>")
+    res.addTrailers({
+        'Server-Timing':
+        'metric;desc="metric 2";dur=12'
+    });
+    res.end();
+});
+</code></pre></div></article><article class="screen screen--trail"></article><article class="screen screen--trailer overlay"><div class="overlay__abstract overlay__abstract--right"><h5 class="overlay__title">Trailer</h5><img class="overlay__qr" src="images/trailer.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://tools.ietf.org/html/rfc7230#section-4.4" data-click>https://tools.ietf.org/html/rfc7230</a></p></div></article><article class="center hint-title"><div class="wrapper"><h1>Resource<br>Hints </h1></div></article><article class="center code-1"><div class="wrapper"><pre><code class="http">HTTP/1.1 200 OK
+Link: &lt;https://widget.com>; 
+    rel=dns-prefetch
+Link: &lt;https://example.com>; 
+    rel=preconnect
+Link: &lt;https://example.com/next-page.html>; 
+    rel=prerender;
+Link: &lt;https://example.com/logo-hires.jpg>; 
+    rel=prefetch; as=image;
+</code></pre></div></article><article class="center code-1"><div class="wrapper"><pre><code class="html">&lt;link rel="dns-prefetch" 
+    href="//widget.com">
+&lt;link rel="preconnect" 
+    href="//cdn.example.com">
+&lt;link rel="prerender" 
+    href="//example.com/next-page.html">
+&lt;link rel="prefetch" 
+    href="//example.com/logo-hires.jpg"
+    as="image">
+</code></pre></div></article><article class="center preload-title"><div class="wrapper"><h1>Preload</h1></div></article><article class="center code-9"><div class="wrapper"><pre><code class="html">&lt;link 
+    rel="preload" 
+    href="/goodmojo.css" 
+    as="style">
+</code></pre></div></article><article class="center code-8"><div class="wrapper"><pre><code class="http">HTTP/1.1 200 OK
+Link: 
+    &lt;/badmojo.css>; 
+    rel=preload; 
+    as=style
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">res.set('Link', [
+    '&lt;/badmojo.css>; rel=preload; 
+        as=style',
+    '&lt;/badmojo.js>; rel=preload; 
+        as=script',
+    '&lt;/font.ttf>; rel=preload; 
+        as=font']);
+</code></pre></div></article><article class="screen screen--link"></article><article class="screen screen--ttfb-data"></article><article class="center hint-title"><div class="wrapper"><h1>103 Early<br>Hints </h1></div></article><article class="center code-0"><div class="wrapper"><pre><code class="http">HTTP/1.1 103 Early Hints
+Link: 
+    &lt;/hintmojo.css>; 
+    rel=preload; 
+    as=style
+
+HTTP/1.1 200 OK
+</code></pre></div></article><article class="center code-9"><div class="wrapper"><pre><code class="bash">npm i -S early-hints
+</code></pre></div></article><article class="center code-8"><div class="wrapper"><pre><code class="bash">app.use(earlyHints([{
+    path: '/hintmojo.css', 
+    rel: 'preload', 
+    as: 'style' 
+}]));
+</code></pre></div></article><article class="screen screen--linkhint"></article><article class="screen screen--hint overlay"><div class="overlay__abstract overlay__abstract--right"><h5 class="overlay__title">103 Hint status</h5><img class="overlay__qr" src="images/trailer.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://tools.ietf.org/html/rfc7230#section-4.4" data-click>https://tools.ietf.org/html/rfc7230</a></p></div></article><article class="center clienthint-title"><div class="wrapper"><h1>Client<br>Hints </h1></div></article><article class="center code-6"><div class="wrapper"><pre><code class="http">Accept-CH: 
+    Save-Data,
+    Downlink,
+    Device-Memory,
+    DPR,
+    Viewport-Width,
+    Width
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="html">&lt;meta 
+    http-equiv="Accept-CH" 
+    content="Save-Data
+        Downlink,
+        Device-Memory,
+        DPR,
+        Viewport-Width, 
+        Width" />
+</code></pre></div></article><article class="center code-9"><div class="wrapper"><pre><code class="http">'save-data': 'on',
+'downlink': '7.95',
+'device-memory': '8',
+</code></pre></div></article><article class="center code-9"><div class="wrapper"><pre><code class="http">'dpr': '1',
+'viewport-width': '1306',
+'width': '327',
+</code></pre></div></article><article class="screen screen--memory"></article><article class="screen screen--downlink"></article><article class="center code-8"><div class="wrapper"><pre><code class="http">Accept-CH-Lifetime: 86400
+</code></pre></div></article><article class="center code-9"><div class="wrapper"><pre><code class="http">Vary: Device-Memory
+
+</code></pre></div></article><article class="center client-title"><div class="wrapper"><h1>Perfor<br>mance</h1></div></article><article class="center code-10"><div class="wrapper"><pre><code class="javascript">Performance
+PerformanceObserver
+</code></pre></div></article><article class="screen screen--performance"></article><article class="center entry"><div class="wrapper"><ul><li>measure</li><li>mark</li><li>navigation</li><li>resource</li><li>longtask</li></ul></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">performance.getEntriesByType(entryType)
+performance.getEntriesByName(name)
+performance.getEntries()
+</code></pre></div></article><article class="center code-1"><div class="wrapper"><pre><code class="javascript">const observer 
+    = new PerformanceObserver(this.handler);
+observer.observe({
+    entryTypes
+});
+
+</code></pre></div></article><article class="center hires-time"><div class="wrapper"><h1>High Res.<br>Time</h1></div></article><article class="center code-9"><div class="wrapper"><pre><code class="javascript">performance.now()
+performance.timeOrigin
+</code></pre></div></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">const start = performance.now();
+const end = performance.now();
+const duration = end - start;
+</code></pre></div></article><article class="screen screen--hirestime overlay"><div class="overlay__abstract overlay__abstract--right"><h5 class="overlay__title">High Resolution Time Level 2</h5><img class="overlay__qr" src="images/hirestime.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://www.w3.org/TR/2018/CR-hr-time-2-20180301/" data-click>https://www.w3.org/TR/2018/CR-hr-time-2-20180301/</a></p></div></article><article class="center client-title"><div class="wrapper"><h1>User<br>Timing</h1></div></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">performance.mark("startTask1");
+// Получение данных
+const url = '/api/v1/employees';
+const resource = await fetch(url);
+performance.mark("endTask1");
+</code></pre></div></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">const entries = performance
+    .getEntriesByType("mark");
+for (const entry of entries) {
+    console.table(entry.toJSON());
+}
+</code></pre></div></article><article class="screen screen--mark"></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">performance.measure(
+    'task1', 
+    'startTask1', 
+    'endTask1'
+);
+</code></pre></div></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">const entries = performance
+    .getEntriesByType("measure");
+for (const entry of entries) {
+    console.table(entry.toJSON());
+}
+</code></pre></div></article><article class="screen screen--measure"></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">performance.clearMeasures('task1')
+</code></pre></div></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">performance.measure('from start');
+</code></pre></div></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">const entries = performance
+    .getEntriesByType("measure");
+for (const entry of entries) {
+    console.table(entry.toJSON());
+}
+</code></pre></div></article><article class="screen screen--measure-2"></article><article class="center navigation-time"><div class="wrapper"><h1>Navigation<br>Timing</h1></div></article><article class="center code-9"><div class="wrapper"><pre><code class="javascript">performance.timing
+performance.navigation
+</code></pre></div></article><article class="screen screen--timing"></article><article class="screen screen--navigation"></article><article class="screen screen--navi"></article><article class="screen screen--navigation-timing overlay"><div class="overlay__abstract overlay__abstract--right"><h5 class="overlay__title">Navigation Timing</h5><img class="overlay__qr" src="images/navigation-timing.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://www.w3.org/TR/2012/REC-navigation-timing-20121217/" data-click>https://www.w3.org/TR/2012/REC-navigation-timing-20121217/</a></p></div></article><article class="center resource-time"><div class="wrapper"><h1>Resource<br>Timing</h1></div></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">const entries = performance
+    .getEntriesByType("resource");
+for (const entry of entries) {
+    console.table(entry.toJSON());
+}
+</code></pre></div></article><article class="screen screen--resource"></article><article class="screen screen--resource-timing overlay"><div class="overlay__abstract overlay__abstract--right"><h5 class="overlay__title">Resource Timing</h5><img class="overlay__qr" src="images/resource.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://w3c.github.io/resource-timing/" data-click>https://w3c.github.io/resource-timing/</a></p></div></article><article class="center long"><div class="wrapper"><h1>Long<br>Task</h1></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">const plannedEntries = ['longtask'];
+const entryTypes = 
+    plannedEntries.filter(entry => {
+    return PerformanceObserver
+        .supportedEntryTypes
+        .includes(entry);
+});
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">if (entryTypes.length > 0) {
+    const observer = 
+        new PerformanceObserver(report);
+    observer.observe({ 
+        entryTypes
+    });
+}
+</code></pre></div></article><article class="screen screen--long overlay"><div class="overlay__abstract overlay__abstract--right"><h5 class="overlay__title">Long Tasks API 1</h5><img class="overlay__qr" src="images/long.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://w3c.github.io/longtasks/" data-click>https://w3c.github.io/longtasks/</a></p></div></article><article class="screen screen--self overlay"><div class="overlay__abstract overlay__abstract--right"><h5 class="overlay__title">JS profiling API</h5><img class="overlay__qr" src="images/self.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://github.com/WICG/js-self-profiling" data-click>https://github.com/WICG/js-self-profiling</a></p></div></article><article class="center beacon"><div class="wrapper"><h1>Beacon</h1></div></article><article class="center code-2"><div class="wrapper"><pre><code class="javascript">const express = require('express');
+const formidable = require('express-formidable');
+const path = require('path');
+const port = 3333;
+const app = express();
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">app.use(formidable({
+    encoding: 'utf-8',
+    uploadDir: path.join(
+        __dirname, 
+        'uploads'),
+    multiples: true,
+    keepExtensions:true,
+}));
+</code></pre></div></article><article class="center code-6"><div class="wrapper"><pre><code class="javascript">app.use('/reports', 
+    function (req, res) {
+        res.status(204).end();
+        console.log(req.fields);
+});
+</code></pre></div></article><article class="center code-7"><div class="wrapper"><pre><code class="javascript">app.use('/', 
+    function (req, res) {
+        res.send(`/…/`)
+            .status(200)
+            .end();
+});
+app.listen(port);
+</code></pre></div></article><article class="center code-7"><div class="wrapper"><pre><code class="javascript">let data = new FormData();
+let items = {
+    some: 'data',
+    more: ['words', 'aside'],
+};
+</code></pre></div></article><article class="center code-7"><div class="wrapper"><pre><code class="javascript">for ( var key in items ) {
+    data.append(
+        key, 
+        items[key]
+    );
+}
+</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="javascript">navigator.sendBeacon('/reports', data);
+</code></pre></div></article><article class="center code-9"><div class="wrapper"><pre><code class="javascript">{ 
+    some: 'data', 
+    more: 'words,aside' 
+}
+</code></pre></div></article><article class="screen screen--beacon overlay"><div class="overlay__abstract overlay__abstract--right"><h5 class="overlay__title">Beacon</h5><img class="overlay__qr" src="images/beacon.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://w3c.github.io/beacon/" data-click>https://w3c.github.io/beacon/</a></p></div></article><article class="contacts center qrcode"><div class="wrapper"><div class="about-speaker half"><p class="name">Антон Немцев</p><p class="link">http://silentimp.info/</p><p class="twitter">@silentimp</p><p class="email">thesilentimp@gmail.com</p><p class="skype">skype: ravencry</p></div><div class="half"><img src="images/git.svg" alt="QRCODE cо ссылкой на доклад"></div><p><a href="https://github.com/SilentImp/AST-and-plugins" data-click>https://goo.gl/Uk7NHL</a></p></div></article></section></body></html>

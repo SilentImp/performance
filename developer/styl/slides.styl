@@ -1,0 +1,1414 @@
+@keyframes jump {
+    15% {
+        filter blur(0)
+    }
+
+    17% {
+        filter blur(3px)
+    }
+
+    18% {
+        filter blur(0)
+    }
+
+    65% {
+        filter blur(0)
+    }
+    70% {
+        filter blur(7px)
+    }
+    75% {
+        filter blur(0)
+    }
+}
+
+@keyframes dx {
+    from {
+        transform rotateX(0)
+    }
+    25% {
+        transform rotateX(-25deg)
+    }
+    50% {
+        transform rotateX(0)
+    }
+    75% {
+        transform rotateX(25deg)
+    }
+    to {
+        transform rotateX(0)
+    }
+}
+
+@keyframes dy {
+    from {
+        transform rotateY(0)
+    }
+    25% {
+        transform rotateY(-5deg)
+    }
+    50% {
+        transform rotateY(0)
+    }
+    75% {
+        transform rotateY(5deg)
+    }
+    to {
+        transform rotateY(0)
+    }
+}
+
+@keyframes dz {
+    from {
+        transform rotateZ(0)
+    }
+    25% {
+        transform rotateZ(-5deg)
+    }
+    50% {
+        transform rotateZ(0)
+    }
+    75% {
+        transform rotateZ(5deg)
+    }
+    to {
+        transform rotateZ(0)
+    }
+}
+
+@keyframes hue {
+    from {
+        filter: hue-rotate(0deg);
+    }
+    to {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.entry
+    ul li 
+        font-size 80px
+        line-height 100px
+
+.targets
+    ul li 
+        font-size 120px
+        line-height 140px
+
+.parts
+    ul li 
+        font-size 140px
+        line-height 160px
+
+.metrics
+    h1 
+        font-size 70px
+        line-height 96px
+    .wrapper
+        width calc(100% - 40px)
+    ul li 
+        font-size 50px
+        line-height 64px
+
+.types
+    .wrapper
+        width calc(100% - 40px)
+    h1 
+        font-size 70px
+        line-height 96px
+    img
+        max-height 500px
+        height 500px
+        width auto
+        max-width none
+
+.competitors
+    h1 
+        font-size 70px
+        line-height 96px
+    .wrapper
+        width calc(100% - 40px)
+    ul li 
+        font-size 70px
+        line-height 96px
+
+.logotypes .wrapper
+    width 100%
+
+.preload-title h1
+    filter: hue-rotate(100deg);
+    animation hue 10s infinite linear both;
+    font-size 500px
+    line-height 480px
+    font-family 'Bebas'
+    text-align left
+    letter-spacing -10px
+    position relative
+    left -55px
+    padding-top 15px
+    background: linear-gradient(735deg, #5433FF 15%, #20BDFF 46%, #A5FECB 100%);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+.trailer-title h1
+    filter: hue-rotate(100deg);
+    animation hue 10s infinite linear both;
+    font-size 500px
+    line-height 380px
+    font-family 'Bebas'
+    text-align left
+    letter-spacing -10px
+    position relative
+    left -55px
+    padding-top 15px
+    background: linear-gradient(535deg, #77A1D3 15%, #79CBCA 46%, #E684AE 100%);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+
+.text-title h1
+    font-size 520px
+    line-height 400px
+    font-family 'Bebas'
+    text-align left
+    letter-spacing -10px
+    position relative
+    left -75px
+    padding-top 15px
+    background: linear-gradient(135deg, #f79d00 25%, #64f38c 100%);
+    animation hue 10s infinite linear both;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+.hires-time h1
+    font-size 480px
+    line-height 360px
+    font-family 'Bebas'
+    text-align left
+    letter-spacing -5px
+    position relative
+    left -50px
+    padding-top 15px
+    background: linear-gradient(55deg, #F09819 25%, #EDDE5D 100%);
+    animation hue 10s infinite linear both;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+.hint-title h1
+    font-size 480px
+    line-height 360px
+    font-family 'Bebas'
+    text-align left
+    letter-spacing -28px
+    position relative
+    left -50px
+    padding-top 15px
+    background: linear-gradient(55deg, #c21500 25%, #ffc500 100%);
+    animation hue 10s infinite linear both;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+.clienthint-title h1
+    font-size 480px
+    line-height 360px
+    font-family 'Bebas'
+    text-align left
+    letter-spacing 0
+    position relative
+    left -150px
+    padding-top 15px
+    background: linear-gradient(715deg, #03001e 25%, #7303c0 50%, #ec38bc 75%, #fdeff9 100%);
+    animation hue 10s infinite linear both;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+.resource-time h1
+    font-size 470px
+    line-height 360px
+    font-family 'Bebas'
+    text-align left
+    letter-spacing -20px
+    position relative
+    left -50px
+    padding-top 15px
+    background: linear-gradient(23deg, #C6FFDD 25%, #FBD786 50%, #f7797d 100%);
+    animation hue 10s infinite linear both;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+
+.server-title h1
+    font-size 480px
+    line-height 360px
+    font-family 'Bebas'
+    text-align left
+    letter-spacing 0
+    position relative
+    left -50px
+    padding-top 15px
+    background: linear-gradient(23deg, #C6FFDD 25%, #FBD786 50%, #f7797d 100%);
+    animation hue 10s infinite linear both;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+.deps
+    font-size 46px
+    line-height 52px
+
+.long h1
+    font-size 480px
+    line-height 400px
+    font-family 'Bebas'
+    text-align left
+    letter-spacing -10px
+    position relative
+    left -280px
+    padding-top 0
+    background: linear-gradient(23deg, #C6FFDD 25%, #FBD786 50%, #f7797d 100%);
+    animation hue 10s infinite linear both;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+
+.pipeline-title h1
+    font-size 360px
+    line-height 320px
+    font-family 'Bebas'
+    text-align left
+    letter-spacing -10px
+    position relative
+    left -40px
+    padding-top 15px
+    background: linear-gradient(23deg, #C6FFDD 25%, #FBD786 50%, #f7797d 100%);
+    animation hue 10s infinite linear both;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+.navigation-time h1
+    font-size 390px
+    line-height 340px
+    font-family 'Bebas'
+    text-align left
+    letter-spacing -15px
+    position relative
+    left -30px
+    padding-top 25px
+    background: linear-gradient(23deg, #FF512F 25%, #F09819 100%);
+    animation hue 10s infinite linear both;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+.percent-title h1
+    font-size 780px
+    line-height 800px
+    font-family 'Bebas'
+    text-align left
+    letter-spacing 0
+    position relative
+    left -100px
+    padding-top 15px
+    background: linear-gradient(23deg, #C6FFDD 25%, #FBD786 50%, #f7797d 100%);
+    animation hue 10s infinite linear both;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+.client-title h1
+    font-size 480px
+    line-height 360px
+    font-family 'Bebas'
+    text-align left
+    letter-spacing 0
+    position relative
+    left -80px
+    padding-top 15px
+    background: linear-gradient(23deg, #C6FFDD 25%, #FBD786 50%, #f7797d 100%);
+    animation hue 10s infinite linear both;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+.beacon h1
+    font-size 480px
+    line-height 480px
+    font-family 'Bebas'
+    text-align left
+    letter-spacing 0
+    position relative
+    left 0
+    top: 20px
+    padding-top 25px
+    background: linear-gradient(23deg, #C6FFDD 25%, #FBD786 50%, #f7797d 100%);
+    animation hue 10s infinite linear both;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+.illustration
+    &--title
+        background-image url(../images/lineal.jpg)
+        background-position -225px 240px
+        perspective 800px
+        transform-style preserve-3d
+        .wrapper
+            animation dy 4s infinite linear both,
+                      jump 20s infinite linear both;
+        h1
+            font-family 'Bebas'
+            font-size 165px
+            letter-spacing: 0px
+            line-height 1
+            animation hue 10s infinite linear both,
+                      dz 6s infinite linear both;
+            background: linear-gradient(220deg, #24C6DC 25%, #514A9D 100%);
+
+            background-clip: text;
+            -webkit-background-clip: text;
+            color transparent
+
+
+.screen
+    &--server-timing
+        background-image url(../images/server-timing.png)
+    &--server-timing-screen
+        background-image url(../images/server-timing-screen.png)
+    &--mark
+        background-image url(../images/mark.png)
+    &--measure
+        background-image url(../images/measure.png)
+    &--measure-2
+        background-image url(../images/measure-2.png)
+    &--server-timing-screen-safari
+        background-image url(../images/server-timing-screen-safari.png)
+    &--bigint
+        background-image url(../images/bigint.png)
+    &--npm-server-timing
+        background-image url(../images/npm-server-timing.png)
+    &--client-server-timing
+        background-image url(../images/client-server-timing.png)
+    &--server-timing-caniuse
+        background-image url(../images/server-timing-caniuse.png)
+    &--ttfb-data
+        background-image url(../images/ttfb-data.png)
+    &--blink-edge
+        background-image url(../images/blink-edge.png)
+    &--trail
+        background-image url(../images/trail.png)
+    &--trailer
+        background-image url(../images/trailer.png)
+    &--link
+        background-image url(../images/linkheader.png)
+    &--linkhint
+        background-image url(../images/hint.png)
+    &--hint
+        background-image url(../images/hint-screeen.png)
+    &--memory
+        background-image url(../images/memory.png)
+    &--downlink
+        background-image url(../images/downlink.png)
+    &--performance
+        background-image url(../images/performance.png)
+    &--hirestime
+        background-image url(../images/hirestime.png)
+    &--timing-overview
+        background-image url(../images/timing-overview.png)
+    &--navigation-timing
+        background-image url(../images/navigation-timing.png)
+    &--timing
+        background-image url(../images/performance-timing.png)
+    &--navigation
+        background-image url(../images/performance-navigation.png)
+    &--demo
+        background-image url(../images/demo.png)
+    &--navi
+        background-image url(../images/navi.png)
+    &--resource-timing
+        background-image url(../images/resource-timing.png)
+    &--resource
+        background-image url(../images/resource.png)
+    &--long
+        background-image url(../images/long.png)
+    &--self
+        background-image url(../images/self.png)
+    &--beacon
+        background-image url(../images/beacon.png)
+        
+
+//   &--develop
+//     background-image url(../images/develop.png)
+//   &--test
+//     background-image url(../images/test.png)
+//   &--yo
+//     background-image url(../images/yo.png)
+//   &--easy
+//     background-image url(../images/easy.jpg)
+//   &--publish
+//     background-image url(../images/eslint-publish.png)
+//   &--ast-visual
+//     background-image url(../images/ast-visual.png)
+//   &--ast-explorer
+//     background-image url(../images/ast-explorer.png)
+//   &--ast-example
+//     background-image url(../images/ast-example.png)
+//   &--ast-find
+//     background-image url(../images/ast-find.png)
+//   &--eslint-error
+//     background-image url(../images/eslint-error.png)
+
+// article.cloud.cloud--wut
+//   h1
+//     width 400px
+//     height 400px
+//     left 40px
+//     bottom 0
+//     top 0
+//     line-height 400px
+//     text-align center
+//     box-sizing border-box
+//     background-color rgba(255,255,255,1)
+//     .wrapper
+//         font-size 120px
+//         line-height 400px
+//         white-space nowrap
+//     &:after
+//         transform rotate(-40deg)
+//         transform-origin 10px -195px
+
+// article.cloud.cloud--title
+//   h1
+//     width 500px
+//     height 500px
+//     right -100px
+//     bottom 0
+//     top 0
+//     line-height 500px
+//     text-align center
+//     box-sizing border-box
+//     background-color rgba(255,255,255,1)
+//     .wrapper
+//         font-size 42px
+//         line-height 56px
+//         white-space nowrap
+//         padding-right 100px
+//         padding-left 20px
+//         text-align left
+//     &:after
+//         transform rotate(-130deg)
+//         transform-origin 10px -247px
+
+
+// article.error
+//     background-color #c00
+//     & >.wrapper
+//         text-align left
+//         font-size 100px
+//         line-height 1.5
+//         font-weight bold
+//         color #fff
+//
+// .developer
+//     font-size 299px
+//     font-weight bold
+//
+// ul.need li
+//     font-size 64px
+//     line-height 72px
+//
+// .illustration
+//     &--pants
+//         background-image url(../images/pants.png)
+//     &--pumb
+//         background-image url(../images/pumb.svg)
+//         background-size 600px auto
+//     &--grid-scheme
+//         background-image url(../images/grid-scheme.png)
+//     &--title
+//         background-image url(../images/money.jpeg)
+//     &--apple
+//         background-image url(../images/appleit.jpg)
+//         background-size contain
+//         background-position -40px 50%
+//         background-color #000
+//     &--debug
+//         background-image url(../images/debug.jpg)
+//         background-size 105% 105%
+//     &--brief
+//         background-image url(../images/book.jpg)
+//     &--pinterest
+//         background-image url(../images/pinterest-logotype.png)
+//         background-size 80% auto
+//         background-color #fff
+//
+//     &--full
+//         background-image url(../images/book-2.jpg)
+//
+//     &--bugs
+//         background-image url(../images/bug.jpg)
+//
+//     &--simmons
+//         background-image url(../images/simmons.jpg)
+//         background-position 0 0
+//         background-color #000
+//
+//     &--rachelandrew
+//         background-image url(../images/rachelandrew.jpg)
+//         background-position 160px 0
+//         background-color #000
+//     &--yt
+//         background-image url(../images/yt.png)
+//         background-position 100% 100%
+//     &--bug
+//         background-image url(../images/bug.jpg)
+//     &--garden
+//         background-image url(../images/garden.png)
+//         background-position 100% 0
+//
+// .simmons--tweet
+//     position absolute
+//     bottom 100px
+//     right 200px
+//
+// .screen
+//     &--register
+//         background-image url(../images/mid.png)
+//     &--certificate
+//         background-image url(../images/certificate.png)
+//     &--letter
+//         background-image url(../images/letter.png)
+//     &--stripe-delawer
+//         background-image url(../images/delawer.png)
+//     &--moto
+//         background-image url(../images/moto.png)
+//     &--stripe-atlas
+//         background-image url(../images/atlas.png)
+//     &--stripe-product
+//         background-image url(../images/sp.png)
+//     &--stripe
+//         background-image url(../images/stripe.svg)
+//         background-size 80% auto
+//     &--ap1
+//         background-image url(../images/ap1.png)
+//     &--ap3
+//         background-image url(../images/iphone.jpg)
+//     &--ap2
+//         background-image url(../images/ap2.png)
+//     &--ap2-a
+//         background-image url(../images/addCard.png)
+//     &--ap2-b
+//         background-image url(../images/pay.png)
+//     &--gp1
+//         background-image url(../images/gp1.jpg)
+//     &--gp2
+//         background-image url(../images/gp2.jpg)
+//     &--gp3
+//         background-image url(../images/gp3.png)
+//     &--s1
+//         background-image url(../images/s1.png)
+//     &--s2
+//         background-image url(../images/s2.png)
+//     &--s3
+//         background-image url(../images/s3.png)
+//     &--s4
+//         background-image url(../images/s4.png)
+//     &--s5
+//         background-image url(../images/s5.png)
+//     &--appay
+//         background-image url(../images/safari.png)
+//     &--auth
+//         background-image url(../images/auth.png)
+//     &--cred
+//         background-image url(../images/cred.png)
+//     &--passwords
+//         background-image url(../images/passwords.png)
+//     &--creds
+//         background-image url(../images/creds.png)
+//     &--usecreds
+//         background-image url(../images/usecreds.png)
+//     &--autofill-config
+//         background-image url(../images/config.png)
+//     &--autofill-settings
+//         background-image url(../images/autofill-config.png)
+//     &--checkout-desktop
+//         background-image url(../images/checkout-desktop.png)
+//     &--checkout-mobile
+//         background-image url(../images/checkout-mobile.png)
+//     &--can
+//         background-image url(../images/CAN.png)
+//     &--autofill
+//         background-image url(../images/AUTOFILL.png)
+//     &--overview
+//         background-image url(../images/WPO.png)
+//     &--pmm
+//         background-image url(../images/PMM.png)
+//     &--pmi
+//         background-image url(../images/PMI.png)
+//     &--bcp
+//         background-image url(../images/BCP.png)
+//     &--pra
+//         background-image url(../images/PRA.png)
+//     &--wpwg
+//         background-image url(../images/WPWG.png)
+//     &--code
+//         background-image url(../images/code.png)
+//     &--p1
+//         background-image url(../images/p1.png)
+//     &--p2
+//         background-image url(../images/p2.png)
+//     &--p3
+//         background-image url(../images/p3.png)
+//     &--p4
+//         background-image url(../images/p4.png)
+//     &--banner
+//         background-image url(../images/banner.png)
+//         background-color #000
+//         background-size auto
+//     &--banner-wide
+//         background-image url(../images/banner-wide.png)
+//         background-color #000
+//         background-size 75% auto
+//     &--p5
+//         background-image url(../images/p5.png)
+//     &--p6
+//         background-image url(../images/p6.png)
+//     &--p7
+//         background-image url(../images/p7.png)
+//     &--p8
+//         background-image url(../images/p8.png)
+//     &--p9
+//         background-image url(../images/p9.png)
+//     &--contents
+//         background-image url(../images/contents.png)
+//     &--p10
+//         background-image url(../images/p10.png)
+//     &--ffdebug
+//         background-image url(../images/ffdebug.png)
+//     &--secret-flags
+//         background-image url(../images/flags.png)
+//     &--chromedebug
+//         background-image url(../images/chromedebug.png)
+//     &--plugin-1
+//         background-image url(../images/cssgridplugin.png)
+//     &--plugin-2
+//         background-image url(../images/chromedebug-2.png)
+//     &--live
+//         background-image url(../images/live.png)
+//     &--draft
+//         background-image url(../images/draft.png)
+//     &--draft-2
+//         background-image url(../images/draft-2.png)
+//     &--ex
+//         background-image url(../images/ex.png)
+//     &--quick
+//         background-image url(../images/quick.png)
+//     &--layoutLandYouTube
+//         background-image url(../images/layoutLandYouTube.png)
+//     &--layoutLand
+//         background-image url(../images/layoutLand.png)
+//     &--cguide
+//         background-image url(../images/cguide.png)
+//     &--support
+//         background-image url(../images/support-2.png)
+//     &--cssgridio
+//         background-image url(../images/cssgridio.png)
+//     &--grid
+//         background-image url(../images/grid.png)
+//     &--support-next
+//         background-image url(../images/support-next.png)
+//     &--support-future
+//         background-image url(../images/future.png)
+//     &--support-ie
+//         background-image url(../images/ie.png)
+//     &--pinterest
+//         background-image url('../images/pinterest.png')
+//     &--grid-1
+//         background-image url('../images/grid-1.png')
+//     &--grid-2
+//         background-image url('../images/grid-2.png')
+//     &--grid-3
+//         background-image url('../images/grid-3.png')
+//     &--grid-4
+//         background-image url('../images/grid-4.png')
+//     &--grid-5
+//         background-image url('../images/grid-5.png')
+//
+// .overlay
+//     &__abstract
+//         box-sizing border-box
+//         padding 20px
+//         position absolute
+//         top 20px
+//         left 20px
+//         bottom 20px
+//         width 33%
+//         background-color rgba(255,255,255,.7)
+//         &--right
+//             left auto
+//             right 20px
+//     &__title
+//         font-size 64px
+//         line-height 72px
+//         h2&
+//             font-size 56px
+//             line-height 64px
+//         h3&
+//             font-size 42px
+//             line-height 48px
+//         h4&
+//             font-size 36px
+//             line-height 42px
+//         h5&
+//             font-size 28px
+//             line-height 36px
+//
+//     &__qr
+//         margin 20px 0
+//         width 100%
+//     &__link
+//         font-size 18px
+//         line-height 28px
+//
+// article.cloud.cloud--ie-next
+//     h1
+//         width 400px
+//         height 400px
+//         right 0
+//         left 0
+//         bottom 0
+//         top 0
+//         line-height 400px
+//         text-align center
+//         box-sizing border-box
+//         background-color rgba(240,240,255,.5)
+//         .wrapper
+//             font-size 56px
+//             line-height 64px
+//             white-space nowrap
+//         &:after
+//             transform rotate(65deg)
+//             transform-origin 10px -198px
+//
+// article.cloud.cloud--title
+//     h1
+//         width 500px
+//         height 500px
+//         right 0
+//         left 0
+//         bottom 0
+//         top 0
+//         line-height 500px
+//         text-align center
+//         box-sizing border-box
+//         background-color rgba(255,255,255,1)
+//         .wrapper
+//             font-size 64px
+//             line-height 72px
+//             white-space nowrap
+//         &:after
+//             transform rotate(-130deg)
+//             transform-origin 10px -247px
+//
+// article.cloud.cloud--apple
+//     h1
+//         width 350px
+//         height 350px
+//         right 160px
+//         top 20px
+//         line-height 350px
+//         text-align center
+//         box-sizing border-box
+//         background-color rgba(255,255,255,.95)
+//         .wrapper
+//             font-size 48px
+//             line-height 56px
+//             white-space nowrap
+//         &:after
+//             transform rotate(50deg)
+//             transform-origin 10px -173px
+//
+//
+// article.cloud.cloud--debug
+//     h1
+//         width 350px
+//         height 350px
+//         right 20px
+//         top 20px
+//         line-height 350px
+//         text-align center
+//         box-sizing border-box
+//         background-color rgba(255,255,255,.95)
+//         .wrapper
+//             font-size 48px
+//             line-height 56px
+//             white-space nowrap
+//         &:after
+//             transform rotate(40deg)
+//             transform-origin 10px -173px
+//
+//
+// article.center.qrcode.var
+//   h2
+//     font-size 64px
+//
+// article.center.qrcode.var-2
+//   h2
+//     font-size 72px
+//
+// article.center.qrcode.var-3
+//   h2
+//     font-size 72px
+//   a
+//     font-size 32px
+//
+// article.center.qrcode.var-4
+//   h2
+//     font-size 72px
+//   a
+//     font-size 24px
+//
+// article.center.qrcode.var-5
+//   h2
+//     font-size 60px
+//   a
+//     font-size 42px
+//
+//
+//
+// article.example.example-grid-layout
+//     .page
+//         display: grid;
+//         grid-gap: 0 20px;
+//
+//         grid-template-columns: 250px auto 350px;
+//         grid-template-rows: 100px auto 100px;
+//
+//         line-height 100px
+//         font-size 24px
+//         min-height 100%
+//
+//
+//     .header
+//         grid-row 1
+//         grid-column 1/4
+//
+//         text-align center
+//         color #fff
+//         background red
+//     .footer
+//         grid-row 3
+//         grid-column 1/4
+//
+//         text-align center
+//         color #fff
+//         background red
+//     .aside
+//         grid-row 2
+//         grid-column 3
+//
+//         width 350px
+//         background green
+//         text-align center
+//         color #fff
+//
+//     .nav
+//         grid-row 2
+//         grid-column 1
+//
+//         width 250px
+//         background blue
+//         text-align center
+//         color #fff
+//
+//     .main
+//         grid-row 2
+//         grid-column 2
+//
+//         background orange
+//         line-height 36px
+//
+// article.example.example-grid-layout-area
+//
+//     .header
+//         grid-area: header;
+//
+//         text-align center
+//         color #fff
+//         background red
+//
+//     .footer
+//         grid-area: footer;
+//
+//         text-align center
+//         color #fff
+//         background red
+//
+//     .aside
+//         grid-area: aside;
+//
+//         width 350px
+//         background green
+//         text-align center
+//         color #fff
+//
+//     .nav
+//         grid-area: nav;
+//
+//         width 250px
+//         background blue
+//         text-align center
+//         color #fff
+//
+//     .main
+//         grid-area: main;
+//
+//         background orange
+//         line-height 36px
+//
+//
+// article.example.example-grid-layout-area-x
+//
+//     .header
+//         grid-area: header;
+//
+//         text-align center
+//         color #fff
+//         background red
+//
+//     .footer
+//         grid-area: footer;
+//
+//         text-align center
+//         color #fff
+//         background red
+//
+//     .aside
+//         grid-area: aside;
+//
+//         width 350px
+//         background green
+//         text-align center
+//         color #fff
+//
+//     .nav
+//         grid-area: nav;
+//
+//         width 250px
+//         background blue
+//         text-align center
+//         color #fff
+//
+//     .main
+//         grid-area: main;
+//
+//         background orange
+//         line-height 36px
+//
+// article.example.example--payment
+//     button
+//         position absolute
+//         top 50%
+//         left 50%
+//         transform translateX(-50%) translateY(-50%) scale(5)
+//
+// article.example.example--autofill
+//     form
+//         position absolute
+//         top 50%
+//         left 50%
+//         transform translateX(-50%) translateY(-50%)
+//         line-height 24px
+//         font-size 20px
+//         fieldset
+//             border 1px solid black
+//             margin 10px
+//             padding 10px
+//         input
+//             height 24px
+//             font-size 20px
+//             line-height 24px
+//             width 100%
+//             margin 0 0 10px
+//
+//
+// article.example
+//     position relative
+//     .item
+//         width 100%
+//         height 100%
+//         background-color rgba(240, 240, 255, .75)
+//         border: 1px solid rgba(140, 140, 155, 1)
+//         align-content: center;
+//         display: grid;
+//         text-align: center;
+//         font-size 42px
+//     &--base-1
+//         .container
+//             display grid
+//             height 100%
+//
+//     &--base-1-flex
+//         .container
+//             display flex
+//             height 100%
+//             width: 100%;
+//             flex-wrap wrap
+//             align-items stretch
+//             align-content flex-start
+//             justify-content space-around
+//             .item
+//                 margin 0 0 20px
+//                 flex 200px 1 1
+//                 height 100px
+//                 max-width 400px
+//                 &:nth-child(3n)
+//                     flex 300px 1 1
+//
+//     &--base-2
+//         .container
+//             display grid
+//             height 100%
+//             grid-template-columns: 1fr 2fr 1fr 1fr;
+//             grid-template-rows: 100px 1fr 1fr 100px;
+//             align-items: center
+//     &--base-3
+//         .container
+//             display grid
+//             height 100%
+//             grid-template-columns: repeat(4, 1fr);
+//             grid-template-rows: 100px auto 100px 100px;
+//     &--base-4
+//         .container
+//             position relative
+//             display grid
+//             height 100%
+//             grid-template-columns: repeat(4, 1fr);
+//             grid-template-rows: repeat(4, 1fr);
+//             .item--first
+//                 background-color #e50000
+//                 font-size 64px
+//                 line-height 25vh
+//                 text-align center
+//                 color #fff
+//                 text-transform uppercase
+//                 border 0
+//             .item--second
+//                 background-color #00e500
+//                 font-size 64px
+//                 line-height 25vh
+//                 text-align center
+//                 color #fff
+//                 text-transform uppercase
+//                 border 0
+//     &--base-5
+//         .container
+//             position relative
+//             display grid
+//             height 100%
+//             grid-template-columns: repeat(4, 1fr);
+//             grid-template-rows: repeat(4, 1fr);
+//             .item--first
+//                 background-color #e50000
+//                 font-size 64px
+//                 line-height 25vh
+//                 text-align center
+//                 color #fff
+//                 text-transform uppercase
+//                 border 0
+//                 order -1
+//             .item--second
+//                 background-color #00e500
+//                 font-size 64px
+//                 line-height 25vh
+//                 text-align center
+//                 color #fff
+//                 text-transform uppercase
+//                 border 0
+//     &--base-55
+//         .container
+//             position relative
+//             display grid
+//             height 100%
+//             grid-template-columns: repeat(4, 1fr);
+//             grid-template-rows: repeat(4, 1fr);
+//             .item--first
+//                 background-color #e50000
+//                 font-size 64px
+//                 line-height 25vh
+//                 text-align center
+//                 color #fff
+//                 text-transform uppercase
+//                 border 0
+//                 order 1
+//             .item--second
+//                 background-color #00e500
+//                 font-size 64px
+//                 line-height 25vh
+//                 text-align center
+//                 color #fff
+//                 text-transform uppercase
+//                 border 0
+//                 order 2
+//             .item--first ~ .item
+//                 order 3
+//     &--base-6
+//         .container
+//             position relative
+//             display grid
+//             height 100%
+//             grid-template-columns: repeat(4, 1fr);
+//             grid-template-rows: repeat(4, 1fr);
+//             background:
+//                 linear-gradient(0deg, rgba(255, 240, 240, .75) 50%, transparent 50%),
+//                 linear-gradient(90deg, rgba(255, 240, 255, .75) 50%, transparent 50%);
+//             background-size 50% 50%, 50% 50%
+//             background-repeat repeat, repeat
+//             .item
+//                 &--alpha
+//                     background-color #f0fff0
+//                     font-size 120px
+//                     text-align center
+//                     color #000
+//                     border 0
+//                 &--omega
+//                     background-color #666
+//                     font-size 120px
+//                     text-align center
+//                     color #fff
+//                     border 0
+//     &--base-7
+//         .container
+//             position relative
+//             display grid
+//             height 100%
+//             grid-template-columns: repeat(4, 1fr);
+//             grid-template-rows: repeat(4, 1fr);
+//             background:
+//                 linear-gradient(0deg, rgba(255, 240, 240, .75) 50%, transparent 50%),
+//                 linear-gradient(90deg, rgba(255, 240, 255, .75) 50%, transparent 50%);
+//             background-size 50% 50%, 50% 50%
+//             background-repeat repeat, repeat
+//             .item
+//                 border 0
+//                 &--alpha
+//                     background-color #f0fff0
+//                     font-size 120px
+//                     text-align center
+//                     color #000
+//                     grid-column-start: 3;
+//                 &--omega
+//                     background-color #666
+//                     font-size 120px
+//                     text-align center
+//                     color #fff
+//                     grid-row-start: 3;
+//     &--base-8
+//         .container
+//             position relative
+//             display grid
+//             height 100%
+//             grid-template-columns: repeat(4, 1fr);
+//             grid-template-rows: repeat(4, 1fr);
+//             background:
+//                 linear-gradient(0deg, rgba(255, 240, 240, .75) 50%, transparent 50%),
+//                 linear-gradient(90deg, rgba(255, 240, 255, .75) 50%, transparent 50%);
+//             background-size 50% 50%, 50% 50%
+//             background-repeat repeat, repeat
+//             .item
+//                 border 0
+//                 &--alpha
+//                     background-color #f0fff0
+//                     font-size 120px
+//                     text-align center
+//                     color #000
+//                     grid-column-start: 3;
+//                     grid-column-end: 5;
+//                 &--omega
+//                     background-color #666
+//                     font-size 120px
+//                     line-height 310px
+//                     text-align center
+//                     color #fff
+//                     grid-row-start: 3;
+//                     grid-row-end: 5;
+//     &--base-9
+//         .container
+//             position relative
+//             display grid
+//             height 100%
+//             grid-template-columns: repeat(4, 1fr);
+//             grid-template-rows: repeat(4, 1fr);
+//             background:
+//                 linear-gradient(0deg, rgba(255, 240, 240, .75) 50%, transparent 50%),
+//                 linear-gradient(90deg, rgba(255, 240, 255, .75) 50%, transparent 50%);
+//             background-size 50% 50%, 50% 50%
+//             background-repeat repeat, repeat
+//             .item
+//                 border 0
+//                 &--alpha
+//                     background-color #f0fff0
+//                     font-size 120px
+//                     text-align center
+//                     color #000
+//                     grid-column: 3 / 5;
+//                 &--omega
+//                     background-color #666
+//                     font-size 120px
+//                     line-height 310px
+//                     text-align center
+//                     color #fff
+//                     grid-row: 3 / 5;
+//     &--base-10
+//         .container
+//             position relative
+//             display grid
+//             height 100%
+//             grid-template-columns: repeat(4, 1fr);
+//             grid-template-rows: repeat(4, 1fr);
+//             background:
+//                 linear-gradient(0deg, rgba(255, 240, 240, .75) 50%, transparent 50%),
+//                 linear-gradient(90deg, rgba(255, 240, 255, .75) 50%, transparent 50%);
+//             background-size 50% 50%, 50% 50%
+//             background-repeat repeat, repeat
+//             .item
+//                 border 0
+//                 &--alpha
+//                     background-color #f0fff0
+//                     font-size 120px
+//                     line-height 310px
+//                     text-align center
+//                     color #000
+//                     grid-column: 3 / span 2;
+//                     grid-row:  1 / span 2;
+//                 &--omega
+//                     background-color #666
+//                     font-size 120px
+//                     line-height 310px
+//                     text-align center
+//                     color #fff
+//                     grid-row: 3 / span 2;
+//                     grid-column: 1 / span 2;
+//     &--base-11
+//         .container
+//             position relative
+//             display grid
+//             height 100%
+//             grid-template-columns: repeat(4, 1fr);
+//             grid-template-rows: repeat(4, 1fr);
+//             background:
+//                 linear-gradient(0deg, rgba(255, 240, 240, .75) 50%, transparent 50%),
+//                 linear-gradient(90deg, rgba(255, 240, 255, .75) 50%, transparent 50%);
+//             background-size 50% 50%, 50% 50%
+//             background-repeat repeat, repeat
+//             .item
+//                 border 0
+//                 &--alpha
+//                     background-color #f0fff0
+//                     font-size 120px
+//                     line-height 310px
+//                     text-align center
+//                     color #000
+//                     grid-area: 2 / 2 / span 2 / span 3;
+//     &--base-12
+//         .container
+//             position relative
+//             display grid
+//             height 100%
+//             grid-template-columns: repeat(4, 1fr);
+//             grid-template-rows: repeat(4, 1fr);
+//             grid-template-areas: "omega omega alpha ." "omega omega alpha ." ". . alpha ." ". . alpha .";
+//             background:
+//                 linear-gradient(0deg, rgba(255, 240, 240, .75) 50%, transparent 50%),
+//                 linear-gradient(90deg, rgba(255, 240, 255, .75) 50%, transparent 50%);
+//             background-size 50% 50%, 50% 50%
+//             background-repeat repeat, repeat
+//             .item
+//                 border 0
+//                 &--alpha
+//                     background-color #f0fff0
+//                     font-size 120px
+//                     line-height 650px
+//                     text-align center
+//                     color #000
+//                     grid-area: alpha;
+//                 &--omega
+//                     background-color #666
+//                     font-size 120px
+//                     line-height 310px
+//                     text-align center
+//                     color #fff
+//                     grid-area: omega;
+//
+//     &--base-13
+//         .container
+//             position relative
+//             display grid
+//             height 100%
+//             grid-template-columns: repeat(4, 1fr);
+//             grid-template-rows: repeat(4, 1fr);
+//             grid-gap 20px
+//
+//     &--base-14
+//         .container
+//             display grid
+//             height 100%
+//             grid-template: 1fr 50px 1fr 1fr / 100px 3fr 1fr 100px;
+//
+//     &--base-15
+//         .viewport
+//             margin auto
+//             background-color #ddd
+//             height 100vh
+//             width 960px
+//         .container
+//             display grid
+//             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+//         .item
+//             height: 340px;
+//             border-style: none;
+//             background-color #888;
+//             &:nth-child(2n)
+//                 background-color #666;
+//
+//     &--base-16
+//         .viewport
+//             margin auto
+//             background-color #ddd
+//             height 100vh
+//             width 800px
+//         .container
+//             display grid
+//             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+//         .item
+//             height: 340px;
+//             border-style: none;
+//             background-color #888;
+//             &:nth-child(2n)
+//                 background-color #666;
+//
+//     &--base-17
+//         .viewport
+//             margin auto
+//             background-color #ddd
+//             height 100vh
+//             width 700px
+//         .container
+//             display grid
+//             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+//         .item
+//             height: 340px;
+//             border-style: none;
+//             background-color #888;
+//             &:nth-child(2n)
+//                 background-color #666;
